@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Ninfriendos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(to bottom, #2c2c2c 40%, #121212 60%);
+            color: #f5f5f5;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #f9ca24;
+            padding: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        nav a {
+            color: #121212;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #1a1a1a;
+            text-decoration: underline;
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 320px; 
+            background-color: transparent;
+            padding-top: 50px;
+        }
+        .logo {
+            max-width: 50%;
+            height: auto;
+        }
+        .contact-container {
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 800px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+            font-family: 'Permanent Marker', cursive !important;
+        }
+        .contact-container h2 {
+            color: #f9ca24;
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-family: 'Press Start 2P', cursive;
+        }
+        .contact-info, .contact-container p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-family: 'Permanent Marker', cursive !important;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 80%;
+            max-width: 500px;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: #f9ca24;
+            color: #121212;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+        .contact-form button:hover {
+            background-color: #d4a317;
+        }
+        #formMessage {
+            display: none;
+            font-size: 1.2em;
+            color: #f9ca24;
+            margin-top: 15px;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            background-color: #f9ca24;
+            color: #121212;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="tour.html">Tour</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <header>
+        <img src="images/8bitlogo.png" alt="Ninfriendos Logo" class="logo">
+    </header>
+
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <p class="contact-info">
+            📧 Email: <a href="mailto:ninfriendosband@gmail.com">ninfriendosband@gmail.com</a><br>
+            📍 Location: Dublin, Ireland
+        </p>
+        <p>We actively answer to messages sent with the form!</p>
+        
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/ninfriendosband@gmail.com" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <p id="formMessage">Message sent, we'll answer as soon as we can!</p>
+    </div>
+
+    <footer>
+        <p>© 2024 Ninfriendos. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            fetch("https://formsubmit.co/ajax/ninfriendosband@gmail.com", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: this.name.value,
+                    email: this.email.value,
+                    message: this.message.value
+                })
+            }).then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById("contactForm").style.display = "none";
+                    document.getElementById("formMessage").style.display = "block";
+                }
+            }).catch(error => console.error("Error:", error));
+        });
+    </script>
+</body>
+</html>
