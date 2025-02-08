@@ -65,4 +65,65 @@ footer {
     font-family: 'Permanent Marker', cursive !important;
 }
 
+/* Ensure elements scale properly on small screens */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* Slightly reduce text size */
+    }
+
+    nav {
+        flex-direction: column; /* Stack navigation links on top of each other */
+        text-align: center;
+    }
+
+    nav a {
+        display: block; /* Make navigation buttons easier to tap */
+        padding: 10px;
+        font-size: 18px; /* Increase readability */
+    }
+
+    header {
+        height: auto; /* Adjusts dynamically */
+        padding: 20px 0;
+    }
+
+    .logo {
+        max-width: 80%; /* Reduce logo size on mobile */
+        height: auto;
+    }
+
+    .video-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .video-container iframe {
+        width: 100%;
+        height: auto; /* Keep aspect ratio */
+        min-height: 250px;
+    }
+
+    .gallery {
+        flex-direction: column; /* Stack images vertically */
+        align-items: center;
+    }
+
+    .gallery img {
+        width: 90%; /* Reduce image width for better mobile fit */
+        height: auto;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 90%; /* Makes form fields easier to use */
+    }
+}
+
+@media (max-width: 768px) {
+    nav a {
+        font-size: 20px; /* Larger tap targets */
+        padding: 15px; 
+    }
+}
 
