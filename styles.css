@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Permanent+Marker&family=Shadow+Into+Light&display=swap');
 
 body {
-    font-family: 'Press Start 2P', cursive; /* Ensuring the correct font */
+    font-family: 'Press Start 2P', cursive;
     background-color: #121212;
     color: #ececec;
     text-align: center;
@@ -21,6 +21,12 @@ header {
     align-items: center;
     height: 500px; /* Adjust height if necessary */
     background-color: #1a1a1a; /* Optional background */
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px; /* Adjust for desired size */
 }
 
 nav {
@@ -53,18 +59,6 @@ footer {
     font-family: 'Press Start 2P', cursive !important;
 }
 
-.logo {
-    max-width: 100%;
-    height: auto;
-    max-height: 400px; /* Adjust for desired size */
-}
-
-.about-text, .about-text h2, .about-text p, 
-.tour-container, .tour-container h2, .tour-info, 
-.contact-container, .contact-container p, .contact-info {
-    font-family: 'Permanent Marker', cursive !important;
-}
-
 /* Ensure elements scale properly on small screens */
 @media (max-width: 768px) {
     body {
@@ -88,7 +82,7 @@ footer {
     }
 
     .logo {
-        max-width: 90%; /* Reduce logo size on mobile */
+        max-width: 95% !important; /* Ensure logo size increases on all mobile pages */
         height: auto;
     }
 
@@ -119,11 +113,3 @@ footer {
         width: 90%; /* Makes form fields easier to use */
     }
 }
-
-@media (max-width: 768px) {
-    nav a {
-        font-size: 20px; /* Larger tap targets */
-        padding: 15px; 
-    }
-}
-
